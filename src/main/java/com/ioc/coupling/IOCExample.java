@@ -1,19 +1,26 @@
 package com.ioc.coupling;
 
-import com.loose.coupling.*;
+//import com.loose.coupling.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class IOCExample {
     public static void main(String[] args) {
-        UserDataProvider userDataProvider = new UserDatabaseProvider();
-        UserManager userManagerWithDB = new UserManager(userDataProvider);
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationIoCLooseCouplingExample.xml");
+
+        UserManager userManagerWithDB = (UserManager) context.getBean("userManagerWithUserDataProvider");
         System.out.println(userManagerWithDB.getUserInfo());
 
-        UserDataProvider webServiceDataProvider = new WebServiceDataProvider();
-        UserManager userManagerWithWS = new UserManager(webServiceDataProvider);
-        System.out.println(webServiceDataProvider.getUserDetails());
+//        UserDataProvider userDataProvider = new UserDatabaseProvider();
+//        UserManager userManagerWithDB = new UserManager(userDataProvider);
+//        System.out.println(userManagerWithDB.getUserInfo());
 
-        UserDataProvider newDatabaseProvider = new NewDatabaseProvider();
-        UserManager userManagerWithNewDB = new UserManager(newDatabaseProvider);
+//        UserDataProvider webServiceDataProvider = new WebServiceDataProvider();
+        UserManager userManagerWithWS = (UserManager) context.getBean("userManagerWithNewDataProvider");
+        System.out.println(userManagerWithWS.getUserInfo());
+//
+//        UserDataProvider newDatabaseProvider = new NewDatabaseProvider();
+        UserManager userManagerWithNewDB = (UserManager) context.getBean("userManagerWithWebServiceDataProvider");
         System.out.println(userManagerWithNewDB.getUserInfo());
     }
 }
