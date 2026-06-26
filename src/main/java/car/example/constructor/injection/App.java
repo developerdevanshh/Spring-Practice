@@ -1,6 +1,6 @@
 package car.example.constructor.injection;
 
-import com.car.example.bean.MyBean;
+//import com.car.example.bean.MyBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
