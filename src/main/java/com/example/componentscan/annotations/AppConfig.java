@@ -1,10 +1,10 @@
-package com.example.componentscan.annotations.componentscan;
+package com.example.componentscan.annotations;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Configuration
-@ComponentScan(basePackages = "com.com.example.componentscan.annotations")
+@ComponentScan(basePackages = "com.example.componentscan.annotations")
 public class AppConfig {
 }
